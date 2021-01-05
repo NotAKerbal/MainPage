@@ -35,7 +35,7 @@
 </style>
 
 <div class="tabs" id="tabs">
-<div class="tab" id="https://notakerbal.github.io/OrbitSimulation/"><div class="button">Orbit simulation</div></div>
+<div class="tab" id="https://notakerbal.github.io/OrbitSimulation/"><div style="cursor: pointer;" onclick="window.location='https://notakerbal.github.io/OrbitSimulation';" class="button">Orbit simulation</div></div>
 </div>
 <iframe id="frame" src = ""></iframe>
 <script>
@@ -54,8 +54,6 @@
    }
    div.onclick = function()   {
       if (this.mouseIsOver)   {
-				window.location.href = this.id;
-				window.location.replace = this.id;
       }
    }
 	}
