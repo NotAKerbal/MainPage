@@ -1,0 +1,81 @@
+<style>
+	.tabs {
+  display: flex;
+  flex-direction: row;
+}
+
+.tab {
+    height: 0;
+    width: 200px;
+    border-bottom: 50px solid #CCCCCC;
+    border-right: 20px solid transparent;
+    border-top-left-radius: 5px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.tab:not(:first-child) {
+    margin-left: -10px;
+    z-index: 0;
+}
+
+.tab .button{
+  padding: 15px;
+  text-align: center;
+  color: #444444;
+}
+
+.active {
+  border-bottom: 50px solid #444444;
+  z-index: 10;
+}
+.active .label{
+  color: #ffffff;
+}
+</style>
+
+<div class="tabs" id="tabs">
+<div class="tab" id="https://notakerbal.github.io/OrbitSimulation/"><div class="button">Orbit simulation</div></div>
+<div class="tab" id="label2"><div class="button">TAB 2</div></div>
+<div class="tab" id="label3"><div class="button">TAB 3</div></div>
+</div>
+<iframe id="frame" src = ""></iframe>
+<script>
+	const savedStyle = document.getElementById("frame").style.display;
+	var mOS = false;
+	function initDivMouseOver(div)   {
+   div.mouseIsOver = false;
+   div.onmouseover = function()   {
+      this.mouseIsOver = true;
+			this.className = "tab active";
+			document.getElementById("frame").src = this.id;
+   };
+   div.onmouseout = function()   {
+      this.mouseIsOver = false;
+			this.className = "tab";
+   }
+   div.onclick = function()   {
+      if (this.mouseIsOver)   {
+
+      }
+   }
+	}
+
+	const animate = () => {
+		document.getElementById("frame").width = window.innerWidth - 20;
+		document.getElementById("frame").height = window.innerHeight - 70;
+		mOS = false;
+		let childArray = document.getElementById("tabs").childNodes;
+		childArray.forEach(item => initDivMouseOver(item))
+		//IFrame Management
+		if(mOS) {
+			document.getElementById("frame").style.display = savedStyle;
+			console.log(mOS)
+		} else {
+		}
+
+		requestAnimationFrame(animate);
+	}
+
+	requestAnimationFrame(animate);
+</script>
